@@ -1,0 +1,209 @@
+/* ===== Google Fonts ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* ===== CSS Variables ===== */
+:root {
+    --primary-font: 'Poppins', sans-serif;
+    --text-color: #ffffff;
+    --background-color: rgba(12, 184, 4, 0.15);
+    --border-color: rgba(67, 255, 80, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.37);
+    --error-color: #ff9900; /* Changed from red to orange */
+    --button-bg: #84cc16;
+    --button-text-color: #1c1c1c;
+    --button-hover-bg: #a3e635;
+    
+    --blur-value: 10px;
+    --transition-speed: 0.3s;
+}
+
+/* ===== Base and Reset ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--primary-font);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('https://images.unsplash.com/photo-1587599829221-71a5240b5d83?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+}
+
+/* ===== Main Layout Containers ===== */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1.25rem; /* 20px */
+}
+
+.glass-container {
+    background: var(--background-color);
+    border-radius: 50%; /* Makes the container a circle */
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(var(--blur-value));
+    -webkit-backdrop-filter: blur(var(--blur-value));
+    width: 400px; /* Fixed width */
+    height: 400px; /* Fixed height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    box-shadow: 0 8px 32px 0 var(--shadow-color);
+}
+
+/* ===== Login Form Styles ===== */
+.login-box {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+}
+
+.login-box h2 {
+    font-size: 2rem; /* 32px */
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 2rem; /* 30px */
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 1.5rem; /* 24px */
+    text-align: left;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 0.625rem 0; /* 10px */
+    font-size: 1rem; /* 16px */
+    color: var(--text-color);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--text-color);
+    outline: none;
+    transition: border-color var(--transition-speed) ease;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 1rem; /* 16px */
+    color: var(--text-color);
+    pointer-events: none;
+    transition: top var(--transition-speed) ease, font-size var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+/* Input state changes */
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+    top: -10px;
+    font-size: 0.8rem; /* 12.8px */
+}
+
+.input-box input:focus-visible {
+    border-bottom-color: var(--button-hover-bg); /* A subtle focus indicator */
+}
+
+.input-box input:invalid {
+    border-bottom-color: var(--error-color);
+}
+
+/* ===== Button and Links ===== */
+.options-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.remember-me input {
+    margin-right: 5px;
+}
+
+.options-link {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: text-decoration var(--transition-speed) ease;
+}
+
+.options-link:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.75rem; /* 12px */
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: var(--button-bg);
+    color: var(--button-text-color);
+    font-size: 1.2rem; /* 19.2px */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.btn:hover {
+    background: var(--button-hover-bg);
+}
+
+.btn:focus-visible {
+    outline: 3px solid var(--button-hover-bg);
+    outline-offset: 2px;
+}
+
+.signup-link {
+    margin-top: 1.25rem; /* 20px */
+    text-align: center;
+    color: var(--text-color);
+}
+
+.signup-link p {
+    font-size: 0.9rem;
+}
+
+.signup-link a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: text-decoration var(--transition-speed) ease;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.signup-link a:focus-visible {
+    outline: 2px solid var(--text-color);
+    border-radius: 2px;
+}
+
+
+/* ===== Responsive Design ===== */
+@media (max-width: 480px) {
+    .glass-container {
+        width: 350px;
+        height: 350px;
+    }
+
+    .login-box h2 {
+        font-size: 1.8rem; /* 28.8px */
+    }
+}
